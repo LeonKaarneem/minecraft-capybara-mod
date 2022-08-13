@@ -1,8 +1,11 @@
 package com.testing.testingmod;
 
 import com.mojang.logging.LogUtils;
+import com.testing.testingmod.entity.ModEntityTypes;
+import com.testing.testingmod.entity.client.CapybaraRenderer;
 import com.testing.testingmod.items.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -22,6 +25,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Main.MODID)
@@ -43,6 +47,7 @@ public class Main
 
     public Main()
     {
+
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
@@ -55,15 +60,23 @@ public class Main
         // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
 
+        ModEntityTypes.register(modEventBus);
+        modEventBus.addListener(this::clientSetup);
+        GeckoLib.initialize();
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
-
+ // EntityRenderers.register(ModEntityTypes.CAPYBARA.get(), CapybaraRenderer::new);
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         // Some common setup code
+
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        EntityRenderers.register(ModEntityTypes.CAPYBARA.get(), CapybaraRenderer::new);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

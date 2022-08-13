@@ -1,3 +1,7 @@
 {
-  "item.testingmod.zircon": "Zircon"
+  "item.testingmod.zircon": "Zircon",
+  "item.testingmod.raw_zircon": "Raw Zircon",
+
+  "itemGroup.capybara": "Capybara Mod",
+  "item.testingmod.capybara_spawn_egg": "Capybara spawn egg"
 }
