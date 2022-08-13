@@ -8,6 +8,6 @@
 
 
 ### More information
-- Minecraft forge mod
+- Minecraft forge mod for minecraft 1.19
 - Geckolib animations
 - Blockbench model
