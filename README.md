@@ -9,7 +9,6 @@
 - Baby Capybara
 - Capybara Swim + Swim Animation
 - Capybara sounds
-- fix capybara spawn egg
 
 
 ### More information
