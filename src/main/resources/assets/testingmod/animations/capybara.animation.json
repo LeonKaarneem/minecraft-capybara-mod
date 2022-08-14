@@ -2,7 +2,7 @@
 	"format_version": "1.8.0",
 	"animations": {
 		"animation.capybara.idle": {
-			"animation_length": 1,
+			"animation_length": 5,
 			"bones": {
 				"head": {
 					"rotation": {
@@ -10,7 +10,7 @@
 							"vector": [0, 0, 0]
 						},
 						"0.5": {
-							"vector": [27.5, 0, 0]
+							"vector": [35, 0, 0]
 						},
 						"0.75": {
 							"vector": [0, 0, 0]
@@ -22,11 +22,6 @@
 		"animation.capybara.walk": {
 			"animation_length": 1,
 			"bones": {
-				"body": {
-					"rotation": {
-						"vector": [0, 0, 0]
-					}
-				},
 				"leg1": {
 					"rotation": {
 						"0.0": {
@@ -121,6 +116,69 @@
 				"leg4": {
 					"position": {
 						"vector": [0, 0, -1]
+					}
+				}
+			}
+		},
+		"animation.capybara.swim": {
+			"animation_length": 1,
+			"bones": {
+				"body": {
+					"position": {
+						"vector": [0, -4, 0]
+					}
+				},
+				"head": {
+					"position": {
+						"vector": [0, -5, 0]
+					}
+				},
+				"leg1": {
+					"rotation": {
+						"vector": [90, 0, 0]
+					},
+					"position": {
+						"vector": [0, -3, 0]
+					}
+				},
+				"leg2": {
+					"rotation": {
+						"vector": [90, 0, 0]
+					},
+					"position": {
+						"vector": [0, -3, 0]
+					}
+				},
+				"leg3": {
+					"rotation": {
+						"0.0": {
+							"vector": [102.5, 0, 0]
+						},
+						"0.4167": {
+							"vector": [72.5, 0, 0]
+						},
+						"0.8333": {
+							"vector": [102.5, 0, 0]
+						}
+					},
+					"position": {
+						"vector": [0, -3, 0]
+					}
+				},
+				"leg4": {
+					"rotation": {
+						"0.0": {
+							"vector": [72.5, 0, 0]
+						},
+						"0.4167": {
+							"vector": [105, 0, 0]
+						},
+						"0.8333": {
+							"vector": [72.5, 0, 0]
+						}
+					},
+					"position": {
+						"vector": [0, -3, 0]
 					}
 				}
 			}

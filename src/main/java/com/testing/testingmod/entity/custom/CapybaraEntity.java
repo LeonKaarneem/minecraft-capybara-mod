@@ -38,7 +38,7 @@ public class CapybaraEntity extends Animal implements IAnimatable {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new PanicGoal(this, 1.25D));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(6, new HurtByTargetGoal(this).setAlertOthers());
     }
@@ -51,19 +51,26 @@ public class CapybaraEntity extends Animal implements IAnimatable {
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.capybara.walk", true));
+            if (this.isInWater()) {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.capybara.swim", true));
+            } else {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.capybara.walk", true));
+            }
             return PlayState.CONTINUE;
         }
 
+
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.capybara.idle", true));
         return PlayState.CONTINUE;
+
+
     }
 
 
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate))
-;
+        ;
     }
 
     @Override
